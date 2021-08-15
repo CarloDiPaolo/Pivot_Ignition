@@ -452,10 +452,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fuel_Canister
       objectReference: {fileID: 0}
-    - target: {fileID: 3356086293544651491, guid: fce408fa52df4e947b86bce430b7b6e8, type: 3}
-      propertyPath: m_TagString
-      value: Fuel
-      objectReference: {fileID: 0}
     - target: {fileID: 7568008686702393232, guid: fce408fa52df4e947b86bce430b7b6e8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 28.4
