@@ -56,14 +56,14 @@ public class Player_Movement : MonoBehaviour
         } */
 
 
-        //This version is cleaner, but accounts only for A and D and not arrow Keys, for now. Add arrow key input later
+        //This version is cleaner, but accounts only for A and D and not arrow Keys, for now. Add arrow key input later(Done)
         if ((Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)))
         {
             Debug.Log("Rotate Left");
-        } else if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        } else if ((Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)))
         {
             Debug.Log("Rotate Right");
-        } else if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+        } else if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow)))
         {
             Debug.Log("Both Side Thrusters Engaged");
             

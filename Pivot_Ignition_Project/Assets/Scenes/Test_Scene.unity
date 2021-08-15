@@ -234,7 +234,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683038807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.93, z: -19.81}
+  m_LocalPosition: {x: 29.33, y: 14.19, z: -33.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -385,6 +385,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 219046836, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
+      propertyPath: thrustForce
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 1080269872470467378, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
       propertyPath: m_Name
       value: Player
@@ -435,7 +439,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4137865799393282581, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
       propertyPath: m_Constraints
-      value: 24
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4137865799393282581, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
@@ -448,7 +456,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2075566835283453814, guid: 3cdf43da411297e4bada949b99b2ed57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 81.53
+      value: 60.8
       objectReference: {fileID: 0}
     - target: {fileID: 2075566835283453814, guid: 3cdf43da411297e4bada949b99b2ed57, type: 3}
       propertyPath: m_LocalPosition.y
