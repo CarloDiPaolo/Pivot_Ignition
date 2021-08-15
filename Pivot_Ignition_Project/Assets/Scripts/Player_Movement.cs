@@ -9,6 +9,7 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] float rotationSpeed = 10f;
     private Vector3 originalPosition;
     private Vector3 originalRotation;
+    private AudioSource mainThrust_sound;
 
     
     
@@ -20,9 +21,10 @@ public class Player_Movement : MonoBehaviour
     {
         rBody = GetComponent<Rigidbody>();
         
-        //originalPosition = new Vector3(0, 3.31f, 0);
         originalPosition = gameObject.transform.position;
         ///originalRotation = gameObject.transform.rotation;
+
+        mainThrust_sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,8 +43,15 @@ public class Player_Movement : MonoBehaviour
         {
             Debug.Log("Thrusters engaged");
             rBody.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
+            if(!mainThrust_sound.isPlaying)
+            {
+                mainThrust_sound.Play();
+            }
             
-        } 
+        } else {
+            mainThrust_sound.Stop();
+
+        }
 
     
     }
