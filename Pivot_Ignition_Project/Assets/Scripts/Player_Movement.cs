@@ -19,11 +19,10 @@ public class Player_Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rBody = GetComponent<Rigidbody>();
-        
         originalPosition = gameObject.transform.position;
         ///originalRotation = gameObject.transform.rotation;
 
+        rBody = GetComponent<Rigidbody>();
         mainThrust_sound = GetComponent<AudioSource>();
     }
 
@@ -41,7 +40,7 @@ public class Player_Movement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.Space))
         {
-            Debug.Log("Thrusters engaged");
+            //Debug.Log("Thrusters engaged");
             rBody.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
             if(!mainThrust_sound.isPlaying)
             {
@@ -76,13 +75,13 @@ public class Player_Movement : MonoBehaviour
         //This version is cleaner, but accounts only for A and D and not arrow Keys, for now. Add arrow key input later(Done)
         if ((Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)))
         {
-            Debug.Log("Rotate Left");
+            //Debug.Log("Rotate Left");
             ApplyRotation(rotationSpeed);
 
         }
         else if ((Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)))
         {
-            Debug.Log("Rotate Right");
+            //Debug.Log("Rotate Right");
 
             ApplyRotation(-rotationSpeed);
 
