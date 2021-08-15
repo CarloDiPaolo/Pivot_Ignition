@@ -5,7 +5,11 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
     Rigidbody rBody;
-    [SerializeField] float thrustForce = 1f;
+    [SerializeField] float thrustForce = 100f;
+    [SerializeField] float rotationSpeed = 10f;
+    private Vector3 originalPosition;
+    private Vector3 originalRotation;
+
     
     
     
@@ -16,6 +20,9 @@ public class Player_Movement : MonoBehaviour
     {
         rBody = GetComponent<Rigidbody>();
         
+        //originalPosition = new Vector3(0, 3.31f, 0);
+        originalPosition = gameObject.transform.position;
+        ///originalRotation = gameObject.transform.rotation;
     }
 
     // Update is called once per frame
@@ -23,6 +30,7 @@ public class Player_Movement : MonoBehaviour
     {
         ProcessThrust();
         ProcessRotation();
+        ResetCheck();
         
     }
     
@@ -60,9 +68,15 @@ public class Player_Movement : MonoBehaviour
         if ((Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)))
         {
             Debug.Log("Rotate Left");
-        } else if ((Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)))
+            ApplyRotation(rotationSpeed);
+
+        }
+        else if ((Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)))
         {
             Debug.Log("Rotate Right");
+
+            ApplyRotation(-rotationSpeed);
+
         } else if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow)))
         {
             Debug.Log("Both Side Thrusters Engaged");
@@ -71,7 +85,21 @@ public class Player_Movement : MonoBehaviour
         }
     }
 
-   
+    void ApplyRotation(float rotationDirection)
+    {
+        transform.Rotate(Vector3.forward * rotationDirection * Time.deltaTime);
+    }
+
+    void ResetCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.AltGr))
+        {
+            gameObject.transform.position = originalPosition;
+            gameObject.transform.rotation = Quaternion.Euler(0,0,0);
+            rBody.velocity = Vector3.zero;
+        }
+    }
+
 }
 
 

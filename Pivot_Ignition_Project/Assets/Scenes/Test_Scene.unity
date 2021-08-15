@@ -389,6 +389,10 @@ PrefabInstance:
       propertyPath: thrustForce
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 219046836, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
+      propertyPath: rotationSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 1080269872470467378, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
       propertyPath: m_Name
       value: Player
@@ -439,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4137865799393282581, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
       propertyPath: m_Constraints
-      value: 16
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 4137865799393282581, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
       propertyPath: m_Mass
