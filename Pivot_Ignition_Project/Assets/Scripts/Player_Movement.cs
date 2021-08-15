@@ -87,7 +87,9 @@ public class Player_Movement : MonoBehaviour
 
     void ApplyRotation(float rotationDirection)
     {
+        rBody.freezeRotation = true;
         transform.Rotate(Vector3.forward * rotationDirection * Time.deltaTime);
+        rBody.freezeRotation = false;
     }
 
     void ResetCheck()
@@ -97,6 +99,7 @@ public class Player_Movement : MonoBehaviour
             gameObject.transform.position = originalPosition;
             gameObject.transform.rotation = Quaternion.Euler(0,0,0);
             rBody.velocity = Vector3.zero;
+            rBody.angularVelocity = Vector3.zero;
         }
     }
 
