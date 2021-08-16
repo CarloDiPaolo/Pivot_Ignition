@@ -10,7 +10,11 @@ public class Player_Movement : MonoBehaviour
     private Vector3 originalPosition;
     private Vector3 originalRotation;
     private AudioSource playerAudioSource;
-    public AudioClip mainThrust;
+    public AudioClip mainThrust_SFX;
+    public ParticleSystem mainThrust_VFX;
+    public ParticleSystem rightThrust_VFX;
+    public ParticleSystem leftThrust_VFX;
+
 
 
     
@@ -46,11 +50,13 @@ public class Player_Movement : MonoBehaviour
             rBody.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
             if(!playerAudioSource.isPlaying)
             {
-                playerAudioSource.PlayOneShot(mainThrust);
+                playerAudioSource.PlayOneShot(mainThrust_SFX);
+                mainThrust_VFX.Play();
             }
             
         } else if (Input.GetKeyUp(KeyCode.Space)){
             playerAudioSource.Stop();
+            mainThrust_VFX.Stop();
 
         }
 
@@ -75,23 +81,30 @@ public class Player_Movement : MonoBehaviour
 
 
         //This version is cleaner, but accounts only for A and D and not arrow Keys, for now. Add arrow key input later(Done)
-        if ((Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)))
+        if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
         {
             //Debug.Log("Rotate Left");
             ApplyRotation(rotationSpeed);
+            rightThrust_VFX.Play();
+            leftThrust_VFX.Stop();
 
         }
-        else if ((Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)))
+        else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
         {
             //Debug.Log("Rotate Right");
 
             ApplyRotation(-rotationSpeed);
+            leftThrust_VFX.Play();
+            rightThrust_VFX.Stop();
 
-        } else if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow)))
+        } else if  (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
         {
-            Debug.Log("Both Side Thrusters Engaged");
-            
-            
+            rightThrust_VFX.Play();
+            leftThrust_VFX.Play();
+            Debug.Log("Both Side Thrusters Engaged");   
+        } else {
+            leftThrust_VFX.Stop();
+            rightThrust_VFX.Stop();
         }
     }
 

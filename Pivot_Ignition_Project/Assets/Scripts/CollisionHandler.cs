@@ -14,6 +14,7 @@ public class CollisionHandler : MonoBehaviour
     public AudioClip yay;
     public ParticleSystem crash_VFX;
     public ParticleSystem success_VFX;
+    
 
     public float loadDelay = 2f;
     bool isTransitioning = false;
@@ -48,7 +49,7 @@ public class CollisionHandler : MonoBehaviour
             }
         }
     }
-
+//Remember to stop thrusters VFX on Crash and Success!!
     void SuccessSequence()
     {
         isTransitioning = true;
