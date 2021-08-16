@@ -9,11 +9,15 @@ public class CollisionHandler : MonoBehaviour
     int currentSceneIndex;
     int nextSceneIndex;
     private AudioSource playerAudioSource;
-    public AudioClip crash;
-    public AudioClip success;
+    public AudioClip crash_SFX;
+    public AudioClip success_SFX;
     public AudioClip yay;
+    public ParticleSystem crash_VFX;
+    public ParticleSystem success_VFX;
+
     public float loadDelay = 2f;
     bool isTransitioning = false;
+
 
 
     void Start()
@@ -51,7 +55,7 @@ public class CollisionHandler : MonoBehaviour
         Invoke("LoadNextLevel", loadDelay);
         Invoke("PlayCheer", 0.5f);
         Debug.Log("SUCCESS");
-        playerAudioSource.PlayOneShot(success);
+        playerAudioSource.PlayOneShot(success_SFX);
         
         
     }
@@ -62,7 +66,7 @@ public class CollisionHandler : MonoBehaviour
         playerAudioSource.Stop();
         GetComponent<Player_Movement>().enabled = false;
         Invoke("ReloadLevel", loadDelay);
-        playerAudioSource.PlayOneShot(crash);
+        playerAudioSource.PlayOneShot(crash_SFX);
         
     }
     void ReloadLevel()
