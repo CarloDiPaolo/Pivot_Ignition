@@ -24,6 +24,7 @@ public class CollisionHandler : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         playerAudioSource = GetComponent<AudioSource>();
+        
 
     }
     void OnCollisionEnter(Collision collision)
@@ -56,6 +57,7 @@ public class CollisionHandler : MonoBehaviour
         Invoke("PlayCheer", 0.5f);
         Debug.Log("SUCCESS");
         playerAudioSource.PlayOneShot(success_SFX);
+        success_VFX.Play();
         
         
     }
@@ -67,6 +69,7 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<Player_Movement>().enabled = false;
         Invoke("ReloadLevel", loadDelay);
         playerAudioSource.PlayOneShot(crash_SFX);
+        crash_VFX.Play();
         
     }
     void ReloadLevel()

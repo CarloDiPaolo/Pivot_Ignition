@@ -198,9 +198,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0206cbcc596e2ab43874f9c262c91e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crash: {fileID: 8300000, guid: ac65faf8f42a2a545bb474d0de3fb921, type: 3}
-  success: {fileID: 8300000, guid: c9ed13d83bdd7f44fb0732cf80946d99, type: 3}
+  crash_SFX: {fileID: 8300000, guid: f9f2e47dc38bb8549b6e8c7f708bd798, type: 3}
+  success_SFX: {fileID: 8300000, guid: c9ed13d83bdd7f44fb0732cf80946d99, type: 3}
   yay: {fileID: 8300000, guid: aeada5de9aa1b934a8f7fb4b96998d33, type: 3}
+  crash_VFX: {fileID: 2572910426020950664}
+  success_VFX: {fileID: 1537355135022651933}
   loadDelay: 2
 --- !u!65 &363050831304318509
 BoxCollider:
@@ -289,7 +291,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cc21d615acbbefb4784afb045d548986, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -465,7 +467,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cc21d615acbbefb4784afb045d548986, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -546,7 +548,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: cc21d615acbbefb4784afb045d548986, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -873,6 +875,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4100699973242056, guid: 62198a3a5dbb64a4f9e1618929224faa, type: 3}
   m_PrefabInstance: {fileID: 1699094832215607555}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1537355135022651933 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198631066050499358, guid: 62198a3a5dbb64a4f9e1618929224faa, type: 3}
+  m_PrefabInstance: {fileID: 1699094832215607555}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2410826905325583432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -930,6 +937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
+--- !u!198 &2572910426020950664 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198204746014789312, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
+  m_PrefabInstance: {fileID: 2410826905325583432}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2412584809437246290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4436899185823514, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
