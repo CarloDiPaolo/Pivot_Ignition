@@ -9,7 +9,9 @@ public class Player_Movement : MonoBehaviour
     [SerializeField] float rotationSpeed = 10f;
     private Vector3 originalPosition;
     private Vector3 originalRotation;
-    private AudioSource mainThrust_sound;
+    private AudioSource playerAudioSource;
+    public AudioClip mainThrust;
+
 
     
     // Start is called before the first frame update
@@ -19,7 +21,7 @@ public class Player_Movement : MonoBehaviour
         ///originalRotation = gameObject.transform.rotation;
 
         rBody = GetComponent<Rigidbody>();
-        mainThrust_sound = GetComponent<AudioSource>();
+        playerAudioSource = GetComponent<AudioSource>();
         
     }
 
@@ -42,13 +44,13 @@ public class Player_Movement : MonoBehaviour
         {
             //Debug.Log("Thrusters engaged");
             rBody.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
-            if(!mainThrust_sound.isPlaying)
+            if(!playerAudioSource.isPlaying)
             {
-                mainThrust_sound.Play();
+                playerAudioSource.PlayOneShot(mainThrust);
             }
             
-        } else {
-            mainThrust_sound.Stop();
+        } else if (Input.GetKeyUp(KeyCode.Space)){
+            playerAudioSource.Stop();
 
         }
 

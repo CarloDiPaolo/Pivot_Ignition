@@ -8,12 +8,17 @@ public class CollisionHandler : MonoBehaviour
 {
     int currentSceneIndex;
     int nextSceneIndex;
-     public float loadDelay = 2f;
+    private AudioSource playerAudioSource;
+    public AudioClip crash;
+    public AudioClip success;
+    public AudioClip yay;
+    public float loadDelay = 2f;
 
 
-    void Awake()
+    void Start()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        playerAudioSource = GetComponent<AudioSource>();
 
     }
     void OnCollisionEnter(Collision collision)
@@ -24,11 +29,11 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Safe Collision");
                 break;
             case "Finish":
-                //Debug.Log("You Win!");
+                
                 SuccessSequence();
                 break;
-            case "Fuel":
-                Debug.Log("Fuel Recharged!");
+            case "Obstacle":
+                
                 break;
             default:
                 CrashSequence();
@@ -37,9 +42,13 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
-    private void SuccessSequence()
+    void SuccessSequence()
     {
         Invoke("LoadNextLevel", loadDelay);
+        Invoke("PlayCheer", 0.5f);
+        Debug.Log("SUCCESS");
+        playerAudioSource.PlayOneShot(success);
+        
         
     }
 
@@ -47,6 +56,7 @@ public class CollisionHandler : MonoBehaviour
     {
         GetComponent<Player_Movement>().enabled = false;
         Invoke("ReloadLevel", loadDelay);
+        playerAudioSource.PlayOneShot(crash);
     }
     void ReloadLevel()
     {
@@ -60,6 +70,11 @@ public class CollisionHandler : MonoBehaviour
             nextSceneIndex = 0;
         }
         SceneManager.LoadScene(nextSceneIndex);
+    }
+
+    void PlayCheer ()
+    {
+        playerAudioSource.PlayOneShot(yay);
     }
 
     

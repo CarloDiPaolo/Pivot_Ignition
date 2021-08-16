@@ -783,6 +783,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4137865799393282581, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
 --- !u!1001 &2075566836446980023
@@ -792,13 +796,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 521805641}
     m_Modifications:
+    - target: {fileID: 2075566835283453813, guid: 3cdf43da411297e4bada949b99b2ed57, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2075566835283453814, guid: 3cdf43da411297e4bada949b99b2ed57, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.8
       objectReference: {fileID: 0}
     - target: {fileID: 2075566835283453814, guid: 3cdf43da411297e4bada949b99b2ed57, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.36
       objectReference: {fileID: 0}
     - target: {fileID: 2075566835283453814, guid: 3cdf43da411297e4bada949b99b2ed57, type: 3}
       propertyPath: m_LocalPosition.z
@@ -856,6 +864,10 @@ PrefabInstance:
     - target: {fileID: 2761109444090002604, guid: bcd5d95df490e11499227deb922b909f, type: 3}
       propertyPath: m_Name
       value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761109444090002604, guid: bcd5d95df490e11499227deb922b909f, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2761109444090002605, guid: bcd5d95df490e11499227deb922b909f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1022,6 +1034,10 @@ PrefabInstance:
     - target: {fileID: 7371057687451221869, guid: c9f713a25f05c6247a1b194ffd12ac78, type: 3}
       propertyPath: m_Name
       value: StaticObstacle_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7371057687451221869, guid: c9f713a25f05c6247a1b194ffd12ac78, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9f713a25f05c6247a1b194ffd12ac78, type: 3}
