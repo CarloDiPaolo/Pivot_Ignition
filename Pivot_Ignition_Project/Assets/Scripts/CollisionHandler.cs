@@ -13,6 +13,7 @@ public class CollisionHandler : MonoBehaviour
     public AudioClip success;
     public AudioClip yay;
     public float loadDelay = 2f;
+    bool isTransitioning = false;
 
 
     void Start()
@@ -23,27 +24,30 @@ public class CollisionHandler : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        switch(collision.gameObject.tag)
-        {
-            case "Friendly":
-                Debug.Log("Safe Collision");
-                break;
-            case "Finish":
-                
-                SuccessSequence();
-                break;
-            case "Obstacle":
-                
-                break;
-            default:
-                CrashSequence();
-                break;
-
+        if (!isTransitioning){
+            switch(collision.gameObject.tag)
+            {
+                case "Friendly":
+                    Debug.Log("Safe Collision");
+                    break;
+                case "Finish":
+                    
+                    SuccessSequence();
+                    break;
+                case "Obstacle":
+                    
+                    break;
+                default:
+                    CrashSequence();
+                    break;
+            }
         }
     }
 
     void SuccessSequence()
     {
+        isTransitioning = true;
+        playerAudioSource.Stop();
         Invoke("LoadNextLevel", loadDelay);
         Invoke("PlayCheer", 0.5f);
         Debug.Log("SUCCESS");
@@ -54,9 +58,12 @@ public class CollisionHandler : MonoBehaviour
 
     void CrashSequence()
     {
+        isTransitioning = true;
+        playerAudioSource.Stop();
         GetComponent<Player_Movement>().enabled = false;
         Invoke("ReloadLevel", loadDelay);
         playerAudioSource.PlayOneShot(crash);
+        
     }
     void ReloadLevel()
     {
@@ -65,6 +72,7 @@ public class CollisionHandler : MonoBehaviour
 
     void LoadNextLevel()
     {
+        isTransitioning = true;
         nextSceneIndex = currentSceneIndex +1;
         if(nextSceneIndex == SceneManager.sceneCountInBuildSettings){
             nextSceneIndex = 0;
