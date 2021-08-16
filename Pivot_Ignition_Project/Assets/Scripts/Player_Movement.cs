@@ -12,10 +12,6 @@ public class Player_Movement : MonoBehaviour
     private AudioSource mainThrust_sound;
 
     
-    
-    
-    
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +20,19 @@ public class Player_Movement : MonoBehaviour
 
         rBody = GetComponent<Rigidbody>();
         mainThrust_sound = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        
         ProcessThrust();
         ProcessRotation();
         ResetCheck();
-        
+            
+
     }
     
     //This adds force on the local Y axis when Space is pressed.
