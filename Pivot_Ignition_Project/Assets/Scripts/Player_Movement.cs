@@ -26,6 +26,9 @@ public class Player_Movement : MonoBehaviour
 
         rBody = GetComponent<Rigidbody>();
         playerAudioSource = GetComponent<AudioSource>();
+        //mainThrust_VFX.Stop();
+        //leftThrust_VFX.Stop();
+        //rightThrust_VFX.Stop();
         
     }
 
