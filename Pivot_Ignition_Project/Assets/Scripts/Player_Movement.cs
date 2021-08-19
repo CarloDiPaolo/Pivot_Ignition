@@ -26,9 +26,11 @@ public class Player_Movement : MonoBehaviour
 
         rBody = GetComponent<Rigidbody>();
         playerAudioSource = GetComponent<AudioSource>();
-        //mainThrust_VFX.Stop();
-        //leftThrust_VFX.Stop();
-        //rightThrust_VFX.Stop();
+        /*mainThrust_VFX.Stop();
+        leftThrust_VFX.Stop();
+        rightThrust_VFX.Stop();
+        */
+        
         
     }
 
@@ -54,8 +56,9 @@ public class Player_Movement : MonoBehaviour
             if(!playerAudioSource.isPlaying)
             {
                 playerAudioSource.PlayOneShot(mainThrust_SFX);
-                mainThrust_VFX.Play();
+                
             }
+            if (!mainThrust_VFX.isPlaying) mainThrust_VFX.Play();
             
         } else if (Input.GetKeyUp(KeyCode.Space)){
             playerAudioSource.Stop();
@@ -70,20 +73,6 @@ public class Player_Movement : MonoBehaviour
     //This rotates the Player/Rocket depending on the input direction
     public void ProcessRotation()
     {
-        //Trying to find the best way to not give one direction precendence over the other. Old version below. New Version after that
-        /*if (Input.GetKey(KeyCode.RightArrow) && Input.GetKey(KeyCode.LeftArrow)||Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
-        {
-            Debug.Log("Straight ahead");
-        }else if(Input.GetKey(KeyCode.RightArrow)||Input.GetKey(KeyCode.D))
-        {
-            Debug.Log("Rotate Right");
-        }else if(Input.GetKey(KeyCode.LeftArrow)||Input.GetKey(KeyCode.A))
-        {
-            Debug.Log("Rotate Left");
-        } */
-
-
-        //This version is cleaner, but accounts only for A and D and not arrow Keys, for now. Add arrow key input later(Done)
         if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
         {
             //Debug.Log("Rotate Left");
@@ -105,7 +94,9 @@ public class Player_Movement : MonoBehaviour
             rightThrust_VFX.Play();
             leftThrust_VFX.Play();
             Debug.Log("Both Side Thrusters Engaged");   
-        } else {
+
+        } else if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
+        {
             leftThrust_VFX.Stop();
             rightThrust_VFX.Stop();
         }
