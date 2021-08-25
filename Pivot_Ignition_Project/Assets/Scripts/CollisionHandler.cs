@@ -15,14 +15,14 @@ public class CollisionHandler : MonoBehaviour
     public ParticleSystem crash_VFX;
     public ParticleSystem success_VFX;
     
-
     public float loadDelay = 2f;
     bool isTransitioning = false;
 
-
+    bool collisionDisabled = false;
 
     void Start()
     {
+        
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         playerAudioSource = GetComponent<AudioSource>();
         
@@ -30,30 +30,39 @@ public class CollisionHandler : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L)){
+        ProcessDebugInput();
+    }
+
+    private void ProcessDebugInput()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
             LoadNextLevel();
+        } else if (Input.GetKeyDown(KeyCode.C)){
+            collisionDisabled = !collisionDisabled;
         }
     }
+
     void OnCollisionEnter(Collision collision)
     {
-        if (!isTransitioning){
-            switch(collision.gameObject.tag)
-            {
-                case "Friendly":
-                    Debug.Log("Safe Collision");
-                    break;
-                case "Finish":
-                    
-                    SuccessSequence();
-                    break;
-                case "Obstacle":
-                    
-                    break;
-                default:
-                    CrashSequence();
-                    break;
-            }
+        if (isTransitioning || collisionDisabled){return;}
+        switch(collision.gameObject.tag)
+        {
+            case "Friendly":
+                Debug.Log("Safe Collision");
+                break;
+            case "Finish":
+                
+                SuccessSequence();
+                break;
+            case "Obstacle":
+                
+                break;
+            default:
+                CrashSequence();
+                break;
         }
+        
     }
 //Remember to stop thrusters VFX on Crash and Success!!
     void SuccessSequence()
