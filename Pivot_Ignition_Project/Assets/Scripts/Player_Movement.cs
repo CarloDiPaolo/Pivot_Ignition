@@ -12,6 +12,7 @@ public class Player_Movement : MonoBehaviour
     private AudioSource playerAudioSource;
     public AudioClip mainThrust_SFX;
     public ParticleSystem mainThrust_VFX;
+    public Light mainThrust_Light;
     public ParticleSystem rightThrust_VFX;
     public ParticleSystem leftThrust_VFX;
 
@@ -26,19 +27,14 @@ public class Player_Movement : MonoBehaviour
 
         rBody = GetComponent<Rigidbody>();
         playerAudioSource = GetComponent<AudioSource>();
-        /*mainThrust_VFX.Stop();
-        leftThrust_VFX.Stop();
-        rightThrust_VFX.Stop();
-        */
         
         
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
         ProcessThrust();
         ProcessRotation();
         ResetCheck();
@@ -53,16 +49,21 @@ public class Player_Movement : MonoBehaviour
         {
             //Debug.Log("Thrusters engaged");
             rBody.AddRelativeForce(Vector3.up * thrustForce * Time.deltaTime);
-            if(!playerAudioSource.isPlaying)
-            {
-                playerAudioSource.PlayOneShot(mainThrust_SFX);
+            if(!playerAudioSource.isPlaying) playerAudioSource.PlayOneShot(mainThrust_SFX);
                 
-            }
+            
             if (!mainThrust_VFX.isEmitting) mainThrust_VFX.Play();
+
+            mainThrust_Light.GetComponent<Light>().enabled = true;
+
+           
             
         } else if (Input.GetKeyUp(KeyCode.Space)){
             playerAudioSource.Stop();
             mainThrust_VFX.Stop();
+
+            mainThrust_Light.GetComponent<Light>().enabled = false;
+            
 
         }
 
@@ -123,7 +124,6 @@ public class Player_Movement : MonoBehaviour
             rBody.angularVelocity = Vector3.zero;
         }
     }
-
 }
 
 
