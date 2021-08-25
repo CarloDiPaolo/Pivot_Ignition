@@ -58,7 +58,7 @@ public class Player_Movement : MonoBehaviour
                 playerAudioSource.PlayOneShot(mainThrust_SFX);
                 
             }
-            if (!mainThrust_VFX.isPlaying) mainThrust_VFX.Play();
+            if (!mainThrust_VFX.isEmitting) mainThrust_VFX.Play();
             
         } else if (Input.GetKeyUp(KeyCode.Space)){
             playerAudioSource.Stop();
@@ -77,8 +77,10 @@ public class Player_Movement : MonoBehaviour
         {
             //Debug.Log("Rotate Left");
             ApplyRotation(rotationSpeed);
-            rightThrust_VFX.Play();
-            leftThrust_VFX.Stop();
+            if(!rightThrust_VFX.isEmitting){
+                rightThrust_VFX.Play();
+                leftThrust_VFX.Stop();
+            }
 
         }
         else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
@@ -86,8 +88,10 @@ public class Player_Movement : MonoBehaviour
             //Debug.Log("Rotate Right");
 
             ApplyRotation(-rotationSpeed);
-            leftThrust_VFX.Play();
-            rightThrust_VFX.Stop();
+            if(!leftThrust_VFX.isEmitting){
+                leftThrust_VFX.Play();
+                rightThrust_VFX.Stop();
+            }
 
         } else if  (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
         {
