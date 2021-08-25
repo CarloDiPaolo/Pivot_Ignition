@@ -909,15 +909,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2805647873239669388, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 34.44
+      value: 12.99
       objectReference: {fileID: 0}
     - target: {fileID: 2805647873239669388, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.06
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 2805647873239669388, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 70
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805647873239669388, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805647873239669388, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
+      propertyPath: InitialModule.startSizeY.scalar
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805647873239669388, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
+      propertyPath: startDelay.scalar
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
