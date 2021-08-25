@@ -85,50 +85,36 @@ public class Player_Movement : MonoBehaviour
         {
             //Debug.Log("Rotate Left");
             ApplyRotation(rotationSpeed);
-            if(!rightThrustSmoke_VFX.isEmitting){
-                rightThrustSmoke_VFX.Play();
-                leftThrustSmoke_VFX.Stop();
-                rightThrustJet_VFX.Play();
-                leftThrustJet_VFX.Stop();
-                rightThrust_Light.GetComponent<Light>().enabled = true;
-                leftThrust_Light.GetComponent<Light>().enabled = false;
-            }
-
+           
+             if(!rightThrustSmoke_VFX.isEmitting) {
+                PlayFX(rightThrustSmoke_VFX, rightThrustJet_VFX, rightThrust_Light, null);
+                StopFX(leftThrustSmoke_VFX, leftThrustJet_VFX, leftThrust_Light, null);
+             }
         }
         else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow))
         {
             //Debug.Log("Rotate Right");
 
             ApplyRotation(-rotationSpeed);
-            if(!leftThrustSmoke_VFX.isEmitting){
-                leftThrustSmoke_VFX.Play();
-                rightThrustSmoke_VFX.Stop();
-                leftThrustJet_VFX.Play();
-                rightThrustJet_VFX.Stop();
-                leftThrust_Light.GetComponent<Light>().enabled = true;
-                rightThrust_Light.GetComponent<Light>().enabled = false;
+
+            if (!leftThrustSmoke_VFX.isEmitting) {
+                PlayFX(leftThrustSmoke_VFX, leftThrustJet_VFX, leftThrust_Light, null);
+                StopFX(rightThrustSmoke_VFX, rightThrustJet_VFX, rightThrust_Light, null);
             }
 
         } else if  (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
         {
-            rightThrustSmoke_VFX.Play();
-            leftThrustSmoke_VFX.Play();
-            rightThrustJet_VFX.Play();
-            leftThrustJet_VFX.Play();
-            //Debug.Log("Both Side Thrusters Engaged"); 
-            rightThrust_Light.GetComponent<Light>().enabled = true;
-            leftThrust_Light.GetComponent<Light>().enabled = true;
+            PlayFX(rightThrustSmoke_VFX, rightThrustJet_VFX, rightThrust_Light, null);
+            PlayFX(leftThrustSmoke_VFX, leftThrustJet_VFX, leftThrust_Light, null);
 
         } else if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
         {
-            leftThrustSmoke_VFX.Stop();
-            rightThrustSmoke_VFX.Stop();
-            leftThrustJet_VFX.Stop();
-            rightThrustJet_VFX.Stop();
-            rightThrust_Light.GetComponent<Light>().enabled = false;
-            leftThrust_Light.GetComponent<Light>().enabled = false;
+            StopFX(rightThrustSmoke_VFX, rightThrustJet_VFX, rightThrust_Light, null);
+            StopFX(leftThrustSmoke_VFX, leftThrustJet_VFX, leftThrust_Light, null);
         }
+        
     }
+
 
     void ApplyRotation(float rotationDirection)
     {
@@ -146,6 +132,27 @@ public class Player_Movement : MonoBehaviour
             rBody.velocity = Vector3.zero;
             rBody.angularVelocity = Vector3.zero;
         }
+    }
+    private void PlayFX(ParticleSystem smoke, ParticleSystem jet, Light light, AudioClip sfx)
+    {
+       
+        smoke.Play();
+        jet.Play();
+        light.GetComponent<Light>().enabled = true;
+
+        playerAudioSource.PlayOneShot(sfx);
+
+    }
+
+    private void StopFX(ParticleSystem smoke, ParticleSystem jet, Light light, AudioClip sfx)
+    {
+
+        smoke.Stop();
+        jet.Stop();
+        light.GetComponent<Light>().enabled = false;
+
+        //playerAudioSource.Stop;
+        
     }
 }
 
