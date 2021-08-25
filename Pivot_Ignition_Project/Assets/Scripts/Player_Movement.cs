@@ -104,13 +104,16 @@ public class Player_Movement : MonoBehaviour
 
         } else if  (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
         {
-            PlayFX(rightThrustSmoke_VFX, rightThrustJet_VFX, rightThrust_Light, null);
-            PlayFX(leftThrustSmoke_VFX, leftThrustJet_VFX, leftThrust_Light, null);
-
+            if (!rightThrustSmoke_VFX.isEmitting || !leftThrustSmoke_VFX.isEmitting){
+                PlayFX(rightThrustSmoke_VFX, rightThrustJet_VFX, rightThrust_Light, null);
+                PlayFX(leftThrustSmoke_VFX, leftThrustJet_VFX, leftThrust_Light, null);
+            }
         } else if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
         {
-            StopFX(rightThrustSmoke_VFX, rightThrustJet_VFX, rightThrust_Light, null);
-            StopFX(leftThrustSmoke_VFX, leftThrustJet_VFX, leftThrust_Light, null);
+            if (rightThrustSmoke_VFX.isEmitting || leftThrustSmoke_VFX.isEmitting){
+                StopFX(rightThrustSmoke_VFX, rightThrustJet_VFX, rightThrust_Light, null);
+                StopFX(leftThrustSmoke_VFX, leftThrustJet_VFX, leftThrust_Light, null);
+            }
         }
         
     }
