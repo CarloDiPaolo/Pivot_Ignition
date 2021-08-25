@@ -14,9 +14,11 @@ public class Player_Movement : MonoBehaviour
     public ParticleSystem mainThrustSmoke_VFX;
     public ParticleSystem mainThrustJet_VFX;
     public Light mainThrust_Light;
-    public ParticleSystem rightThrust_VFX;
+    public ParticleSystem rightThrustSmoke_VFX;
+    public ParticleSystem rightThrustJet_VFX;
     public Light rightThrust_Light;
-    public ParticleSystem leftThrust_VFX;
+    public ParticleSystem leftThrustSmoke_VFX;
+    public ParticleSystem leftThrustJet_VFX;
     public Light leftThrust_Light;
 
 
@@ -83,9 +85,11 @@ public class Player_Movement : MonoBehaviour
         {
             //Debug.Log("Rotate Left");
             ApplyRotation(rotationSpeed);
-            if(!rightThrust_VFX.isEmitting){
-                rightThrust_VFX.Play();
-                leftThrust_VFX.Stop();
+            if(!rightThrustSmoke_VFX.isEmitting){
+                rightThrustSmoke_VFX.Play();
+                leftThrustSmoke_VFX.Stop();
+                rightThrustJet_VFX.Play();
+                leftThrustJet_VFX.Stop();
                 rightThrust_Light.GetComponent<Light>().enabled = true;
                 leftThrust_Light.GetComponent<Light>().enabled = false;
             }
@@ -96,25 +100,31 @@ public class Player_Movement : MonoBehaviour
             //Debug.Log("Rotate Right");
 
             ApplyRotation(-rotationSpeed);
-            if(!leftThrust_VFX.isEmitting){
-                leftThrust_VFX.Play();
-                rightThrust_VFX.Stop();
+            if(!leftThrustSmoke_VFX.isEmitting){
+                leftThrustSmoke_VFX.Play();
+                rightThrustSmoke_VFX.Stop();
+                leftThrustJet_VFX.Play();
+                rightThrustJet_VFX.Stop();
                 leftThrust_Light.GetComponent<Light>().enabled = true;
                 rightThrust_Light.GetComponent<Light>().enabled = false;
             }
 
         } else if  (Input.GetKey(KeyCode.LeftArrow) && Input.GetKey(KeyCode.RightArrow))
         {
-            rightThrust_VFX.Play();
-            leftThrust_VFX.Play();
+            rightThrustSmoke_VFX.Play();
+            leftThrustSmoke_VFX.Play();
+            rightThrustJet_VFX.Play();
+            leftThrustJet_VFX.Play();
             //Debug.Log("Both Side Thrusters Engaged"); 
             rightThrust_Light.GetComponent<Light>().enabled = true;
             leftThrust_Light.GetComponent<Light>().enabled = true;
 
         } else if (!Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
         {
-            leftThrust_VFX.Stop();
-            rightThrust_VFX.Stop();
+            leftThrustSmoke_VFX.Stop();
+            rightThrustSmoke_VFX.Stop();
+            leftThrustJet_VFX.Stop();
+            rightThrustJet_VFX.Stop();
             rightThrust_Light.GetComponent<Light>().enabled = false;
             leftThrust_Light.GetComponent<Light>().enabled = false;
         }
