@@ -11,7 +11,8 @@ public class Player_Movement : MonoBehaviour
     private Vector3 originalRotation;
     private AudioSource playerAudioSource;
     public AudioClip mainThrust_SFX;
-    public ParticleSystem mainThrust_VFX;
+    public ParticleSystem mainThrustSmoke_VFX;
+    public ParticleSystem mainThrustJet_VFX;
     public Light mainThrust_Light;
     public ParticleSystem rightThrust_VFX;
     public Light rightThrust_Light;
@@ -54,7 +55,8 @@ public class Player_Movement : MonoBehaviour
             if(!playerAudioSource.isPlaying) playerAudioSource.PlayOneShot(mainThrust_SFX);
                 
             
-            if (!mainThrust_VFX.isEmitting) mainThrust_VFX.Play();
+            if (!mainThrustSmoke_VFX.isEmitting) mainThrustSmoke_VFX.Play();
+            if (!mainThrustJet_VFX.isEmitting) mainThrustJet_VFX.Play();
 
             mainThrust_Light.GetComponent<Light>().enabled = true;
 
@@ -62,7 +64,8 @@ public class Player_Movement : MonoBehaviour
             
         } else if (Input.GetKeyUp(KeyCode.Space)){
             playerAudioSource.Stop();
-            mainThrust_VFX.Stop();
+            mainThrustSmoke_VFX.Stop();
+            mainThrustJet_VFX.Stop();
 
             mainThrust_Light.GetComponent<Light>().enabled = false;
             
