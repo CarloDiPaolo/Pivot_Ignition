@@ -28,6 +28,12 @@ public class CollisionHandler : MonoBehaviour
         
 
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L)){
+            LoadNextLevel();
+        }
+    }
     void OnCollisionEnter(Collision collision)
     {
         if (!isTransitioning){
