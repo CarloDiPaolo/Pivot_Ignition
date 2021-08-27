@@ -188,11 +188,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &567098938 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5497963205690667359, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
-  m_PrefabInstance: {fileID: 1080269872420012161}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &683038807
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2761109444090002605, guid: bcd5d95df490e11499227deb922b909f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.1
+      value: 130.9
       objectReference: {fileID: 0}
     - target: {fileID: 2761109444090002605, guid: bcd5d95df490e11499227deb922b909f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -579,15 +574,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2761109444090002605, guid: bcd5d95df490e11499227deb922b909f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.95782
+      value: 6.20257
       objectReference: {fileID: 0}
     - target: {fileID: 2761109444090002605, guid: bcd5d95df490e11499227deb922b909f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 154.44
+      value: 489.2814
       objectReference: {fileID: 0}
     - target: {fileID: 2761109444090002605, guid: bcd5d95df490e11499227deb922b909f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 66.249
+      value: 209.88347
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcd5d95df490e11499227deb922b909f, type: 3}
@@ -595,11 +590,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2075566835283453814, guid: 3cdf43da411297e4bada949b99b2ed57, type: 3}
   m_PrefabInstance: {fileID: 2075566836446980023}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1333503267 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8520734660691453662, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
-  m_PrefabInstance: {fileID: 1080269872420012161}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1357093170
 GameObject:
@@ -849,13 +839,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719704609}
-  m_LocalRotation: {x: 0.5757408, y: 0.16576609, z: -0.1927151, w: 0.7771133}
+  m_LocalRotation: {x: 0.32168162, y: 0.0601621, z: -0.34475094, w: 0.8798002}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 73.48, y: 7.219, z: -22.464}
+  m_LocalEulerAnglesHint: {x: 37.41, y: -8.393, z: -45.642}
 --- !u!1 &1789563869
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,11 +877,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &1910642110 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4460875153935429655, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
-  m_PrefabInstance: {fileID: 1080269872420012161}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1923506784 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2761109444090002605, guid: bcd5d95df490e11499227deb922b909f, type: 3}
@@ -953,18 +938,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 219046836, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
-      propertyPath: rightThrustJet_VFX
-      value: 
-      objectReference: {fileID: 567098938}
-    - target: {fileID: 219046836, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
-      propertyPath: leftThrustJet_VFX
-      value: 
-      objectReference: {fileID: 1333503267}
-    - target: {fileID: 219046836, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
-      propertyPath: leftThrustSmoke_VFX
-      value: 
-      objectReference: {fileID: 1910642110}
     - target: {fileID: 1080269872470467378, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
       propertyPath: m_Name
       value: Player
