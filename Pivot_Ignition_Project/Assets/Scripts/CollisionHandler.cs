@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +16,7 @@ public class CollisionHandler : MonoBehaviour
     public ParticleSystem success_VFX;
     
     public float loadDelay = 2f;
-    bool isTransitioning = false;
+    public bool isTransitioning = false;
 
     bool collisionDisabled = false;
 
@@ -25,12 +25,15 @@ public class CollisionHandler : MonoBehaviour
         
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         playerAudioSource = GetComponent<AudioSource>();
+
+        
         
 
     }
     void Update()
     {
         ProcessDebugInput();
+        
     }
 
     private void ProcessDebugInput()
@@ -46,6 +49,9 @@ public class CollisionHandler : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (isTransitioning || collisionDisabled){return;}
+
+
+        
         switch(collision.gameObject.tag)
         {
             case "Friendly":
@@ -82,7 +88,7 @@ public class CollisionHandler : MonoBehaviour
     {
         isTransitioning = true;
         playerAudioSource.Stop();
-        GetComponent<Player_Movement>().enabled = false;
+        //GetComponent<Player_Movement>().enabled = false;
         Invoke("ReloadLevel", loadDelay);
         playerAudioSource.PlayOneShot(crash_SFX);
         crash_VFX.Play();

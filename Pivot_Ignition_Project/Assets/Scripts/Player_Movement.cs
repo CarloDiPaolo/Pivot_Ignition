@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
     Rigidbody rBody;
-    [SerializeField] float thrustForce = 100f;
+    [SerializeField] public float thrustForce = 100f;
     [SerializeField] float rotationSpeed = 10f;
     private Vector3 originalPosition;
     private Vector3 originalRotation;
@@ -21,6 +21,9 @@ public class Player_Movement : MonoBehaviour
     public ParticleSystem leftThrustJet_VFX;
     public Light leftThrust_Light;
 
+    public CollisionHandler cH;
+    private bool isTransitioning;
+
 
 
     
@@ -32,6 +35,8 @@ public class Player_Movement : MonoBehaviour
 
         rBody = GetComponent<Rigidbody>();
         playerAudioSource = GetComponent<AudioSource>();
+
+        cH = FindObjectOfType<CollisionHandler>();
         
         
 
@@ -43,6 +48,22 @@ public class Player_Movement : MonoBehaviour
         ProcessThrust();
         ProcessRotation();
         ResetCheck();
+        isTransitioning = cH.isTransitioning;
+
+        if (isTransitioning){
+
+            mainThrustSmoke_VFX.Stop();
+            mainThrustJet_VFX.Stop();
+            mainThrust_Light.GetComponent<Light>().enabled = false;
+
+            rightThrustSmoke_VFX.Stop();
+            rightThrustJet_VFX.Stop();
+            rightThrust_Light.GetComponent<Light>().enabled = false;
+
+            leftThrustSmoke_VFX.Stop();
+            leftThrustJet_VFX.Stop();
+            leftThrust_Light.GetComponent<Light>().enabled = false;
+        }
             
 
     }
@@ -50,6 +71,8 @@ public class Player_Movement : MonoBehaviour
     //This adds force on the local Y axis when Space is pressed.
     public void ProcessThrust()
     {
+        if (isTransitioning){ return; }
+
         if(Input.GetKey(KeyCode.Space))
         {
             //Debug.Log("Thrusters engaged");
@@ -81,6 +104,8 @@ public class Player_Movement : MonoBehaviour
     //This rotates the Player/Rocket depending on the input direction
     public void ProcessRotation()
     {
+        if (isTransitioning){ return; }
+
         if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
         {
             //Debug.Log("Rotate Left");
