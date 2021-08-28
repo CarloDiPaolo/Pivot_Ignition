@@ -4191,7 +4191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BindingMode: 1
+  m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 0, z: -30.13}
   m_XDamping: 1
   m_YDamping: 1
@@ -7233,18 +7233,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1609531886, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -8.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 1609531887, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
-      propertyPath: m_Range
-      value: 31.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 1609531887, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     - target: {fileID: 1080269872470467378, guid: b42f3fe2374799448b32a2669bde9d20, type: 3}
       propertyPath: m_Name
       value: Player
